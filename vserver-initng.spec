@@ -1,10 +1,16 @@
 Summary:	initng on vserver
 Name:		vserver-initng
-Version:	0.0000.1
-Release:	0.6
+Version:	0.0000.2
+Release:	0.4
 License:	GPL
 Group:		Base
+Source0:	%{name}-rc
 Requires:	initng
+Requires:	mount
+Requires:	util-linux
+Requires:	net-tools
+Requires:	hdparm
+Requires:	module-init-tools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_exec_prefix	/
@@ -20,24 +26,8 @@ DO NOT install this package for a normal system!
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/var/{run/netreport,log}
-
-for i in 0 1 2 3 4 5 6; do
-	install -d $RPM_BUILD_ROOT/etc/rc.d/rc$i.d
-done
-
-cat <<'EOF' > $RPM_BUILD_ROOT/etc/rc.d/rc
-#!/bin/sh
-# avoid being interrupted by child or keyboard
-trap : INT QUIT TSTP
-
-echo "args: $#:$@"
-runlevel="$1"
-if [ "$runlevel" = 3 ]; then
-	exec /sbin/initng --i_am_init &
-	echo "initng execution failed!"
-fi
-EOF
+install -d $RPM_BUILD_ROOT/etc/rc.d
+install %{SOURCE0} $RPM_BUILD_ROOT/etc/rc.d/rc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
