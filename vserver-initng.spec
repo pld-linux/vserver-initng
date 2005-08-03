@@ -1,28 +1,32 @@
 Summary:	initng on vserver
+Summary(pl):	initng dla vservera
 Name:		vserver-initng
 Version:	0.0000.2
 Release:	0.4
 License:	GPL
 Group:		Base
 Source0:	%{name}-rc
-Requires:	initng
-Requires:	mount
-Requires:	util-linux
-Requires:	net-tools
 Requires:	hdparm
+Requires:	initng
 Requires:	module-init-tools
+Requires:	mount
+Requires:	net-tools
+Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_exec_prefix	/
 
 %description
-TODO
+initng on vserver.
 
 DO NOT install this package for a normal system!
 
-%prep
+%description -l pl
+initng dla vservera.
 
-%build
+NIE nale¿y instalowaæ tego pakietu na normalnym systemie!
+
+%prep
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -33,7 +37,6 @@ install %{SOURCE0} $RPM_BUILD_ROOT/etc/rc.d/rc
 rm -rf $RPM_BUILD_ROOT
 
 %post
-
 if [ "$1" = 1 ]; then
 cat << EOF
 
@@ -47,7 +50,6 @@ cat << EOF
  **************************************************
 
 EOF
-
 fi
 
 %files
