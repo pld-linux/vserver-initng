@@ -2,10 +2,11 @@ Summary:	initng on vserver
 Summary(pl):	initng dla vservera
 Name:		vserver-initng
 Version:	0.0000.2
-Release:	0.4
+Release:	0.5
 License:	GPL
 Group:		Base
 Source0:	%{name}-rc
+Requires:	agetty
 Requires:	hdparm
 Requires:	initng
 Requires:	module-init-tools
