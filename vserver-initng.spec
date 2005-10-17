@@ -2,12 +2,13 @@ Summary:	initng on vserver
 Summary(pl):	initng dla vservera
 Name:		vserver-initng
 Version:	0.01
-Release:	0.2
+Release:	0.3
 License:	GPL
 Group:		Base
-Source0:	%{name}-rc
+#Source0:	%{name}-rc
 BuildRequires:	rpmbuild(macros) >= 1.194
 Requires:	initng
+Requires:	initng-pld
 Requires:	util-linux
 Requires:	vserver-basesystem
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -28,8 +29,6 @@ NIE nale¿y instalowaæ tego pakietu na normalnym systemie!
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/rc.d
-install %{SOURCE0} $RPM_BUILD_ROOT/etc/rc.d/rc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -47,5 +46,3 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%dir /etc/rc.d
-%attr(755,root,root) /etc/rc.d/rc
