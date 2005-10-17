@@ -1,18 +1,15 @@
 Summary:	initng on vserver
 Summary(pl):	initng dla vservera
 Name:		vserver-initng
-Version:	0.0000.2
-Release:	0.5
+Version:	0.01
+Release:	0.2
 License:	GPL
 Group:		Base
 Source0:	%{name}-rc
-Requires:	agetty
-Requires:	hdparm
+BuildRequires:	rpmbuild(macros) >= 1.194
 Requires:	initng
-Requires:	module-init-tools
-Requires:	mount
-Requires:	net-tools
 Requires:	util-linux
+Requires:	vserver-basesystem
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_exec_prefix	/
@@ -39,17 +36,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 if [ "$1" = 1 ]; then
-cat << EOF
+%banner -e %{name} <<EOF
+You will need to setup '/sbin/initng' in
+/etc/vservers/<vserver>/apps/init/cmd.start
 
- **************************************************
- *                                                *
- *  	         BIG FAT WARNING!!!               *
- *                                                *
- *  This package is for use inside Vserver ONLY!  *
- *  DO NOT install it on normal system!           *
- *                                                *
- **************************************************
-
+and 'plain' in
+/etc/vservers/<vserver>/apps/init/style
 EOF
 fi
 
