@@ -1,5 +1,5 @@
 Summary:	initng on vserver
-Summary(pl):	initng dla vservera
+Summary(pl.UTF-8):   initng dla vservera
 Name:		vserver-initng
 Version:	0.01
 Release:	0.3
@@ -20,10 +20,10 @@ initng on vserver.
 
 DO NOT install this package for a normal system!
 
-%description -l pl
+%description -l pl.UTF-8
 initng dla vservera.
 
-NIE nale¿y instalowaæ tego pakietu na normalnym systemie!
+NIE naleÅ¼y instalowaÄ‡ tego pakietu na normalnym systemie!
 
 %prep
 
