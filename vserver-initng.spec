@@ -1,5 +1,5 @@
 Summary:	initng on vserver
-Summary(pl.UTF-8):   initng dla vservera
+Summary(pl.UTF-8):	initng dla vservera
 Name:		vserver-initng
 Version:	0.01
 Release:	0.3
